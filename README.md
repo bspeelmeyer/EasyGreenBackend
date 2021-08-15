@@ -16,10 +16,12 @@ We will be adopting the GitFlow workflow for this project. Make sure you're fami
 
 ![Overview of branching](img/git-flow.png)
 
+#### Repository structure
+
+Easy Green is adopting a mono-repo approach to development. There will be a 'backend' and 'frontend' feature branch that will be periodically merged to 'develop'. 
+
 
 #### TODO
 
-- Set **develop** as default branch
 - Configure **reviews** to be required before PRs are able to be merged.
-- Determine repo structure - monorepo or seperate repos for backend/frontend?
 
