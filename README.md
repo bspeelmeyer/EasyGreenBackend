@@ -20,7 +20,6 @@ We will be adopting the GitFlow workflow for this project. Make sure you're fami
 
 Easy Green is adopting a mono-repo approach to development. There will be a 'backend' and 'frontend' feature branch that will be periodically merged to 'develop'. 
 
-
 #### TODO
 
 - Configure **reviews** to be required before PRs are able to be merged.
