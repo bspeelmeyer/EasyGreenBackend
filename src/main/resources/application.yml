@@ -1,0 +1,12 @@
+spring:
+  datasource:
+    # name of the database
+    name: easygreener
+    url: jdbc:mysql://localhost:3306/easygreener?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf8
+    # replace username and password
+    username: root
+    password: 123456789
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+server:
+  port: 8080
