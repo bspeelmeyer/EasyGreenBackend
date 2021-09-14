@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pp1.easygreen.mapper.UserMapper">
+    <resultMap id="BaseResultMap" type="com.pp1.easygreen.entity.User">
+        <!--
+        -->
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="first_name" jdbcType="VARCHAR" property="firstName"/>
+        <result column="last_name" jdbcType="VARCHAR" property="lastName"/>
+        <result column="username" jdbcType="VARCHAR" property="userName"/>
+        <result column="password" jdbcType="VARCHAR" property="password"/>
+        <result column="email" jdbcType="VARCHAR" property="email"/>
+        <result column="phone" jdbcType="VARCHAR" property="phone"/>
+        <result column="gender" jdbcType="VARCHAR" property="gender"/>
+        <result column="date_of_birth" jdbcType="TIMESTAMP" property="dateOfBirth"/>
+        <result column="address" jdbcType="VARCHAR" property="address"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        <!--
+        -->
+        `id`, `first_name`, `last_name`, `username`, `password`, `email`, `phone`, `gender`,
+        `date_of_birth`, `address`
+    </sql>
+
+    <select id="getInfo" parameterType="String" resultMap="BaseResultMap">
+        SELECT * FROM user WHERE username = #{username} AND password = #{password}
+    </select>
+
+    <select id="selectAll" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from user
+    </select>
+
+    <select id="selectByUsername" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from user where `username` =#{username,jdbcType=VARCHAR}
+    </select>
+
+    <insert id="insert" parameterType="com.pp1.easygreen.entity.User" useGeneratedKeys="true"  keyProperty="id">
+        insert into user (`id`, `first_name`, `last_name`,
+        `username`, `password`, `email`,
+        `phone`, `gender`, `date_of_birth`,
+        `address`)
+        values (#{id,jdbcType=BIGINT}, #{first_name,jdbcType=VARCHAR}, #{last_name,jdbcType=INTEGER},
+        #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR},
+        #{phone,jdbcType=VARCHAR}, #{gender,jdbcType=VARCHAR}, #{date_of_birth,jdbcType=TIMESTAMP},
+        #{address,jdbcType=VARCHAR})
+    </insert>
+</mapper>

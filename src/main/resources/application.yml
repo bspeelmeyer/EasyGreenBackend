@@ -9,4 +9,13 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
 
 server:
-  port: 3000
+  port: 8088
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.pp1.easygreen.entity
+
+jwt:
+  secret: secretscookiez
+  expiration: 7200000
+  token: Authorization
