@@ -1,6 +1,9 @@
 package com.pp1.easygreen.service.impl;
 
+import com.pp1.easygreen.entity.Admin;
+import com.pp1.easygreen.entity.BaseUser;
 import com.pp1.easygreen.entity.User;
+import com.pp1.easygreen.mapper.AdminMapper;
 import com.pp1.easygreen.mapper.UserMapper;
 import com.pp1.easygreen.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +23,8 @@ import java.util.List;
 public class UserServiceImpl implements UserService {
     @Resource
     private UserMapper userMapper;
+    @Resource
+    private AdminMapper adminMapper;
     @Autowired
     @Qualifier("jwtUserDetailsService")
     private UserDetailsService userDetailsService;
@@ -32,29 +37,34 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User getByUsername(String username) {
-        User user = userMapper.selectByUsername(username);
+    public BaseUser getByEmail(String email) {
+        User user = userMapper.selectByEmail(email);
+        BaseUser baseUser = new BaseUser(email);
         if (user != null) {
-            user.setId(user.getId());
-            user.setFirstName(user.getFirstName());
-            user.setLastName(user.getLastName());
-            user.setUserName(user.getUserName());
-            user.setPassword(user.getPassword());
-            user.setEmail(user.getEmail());
-            user.setPhone(user.getPhone());
-            user.setGender(user.getGender());
-            user.setDateOfBirth(user.getDateOfBirth());
-            user.setAddress(user.getAddress());
-            return user;
+            baseUser.setId(user.getId());
+            baseUser.setPassword(user.getPassword());
+            baseUser.setEmail(user.getEmail());
+            baseUser.setName(user.getUserName());
+            baseUser.setRole("USER");
+            return baseUser;
+        }
+        Admin admin = adminMapper.selectByEmail(email);
+        if (admin != null) {
+            baseUser.setId(admin.getId());
+            baseUser.setPassword(admin.getPassword());
+            baseUser.setEmail(admin.getEmail());
+            baseUser.setName(admin.getName());
+            baseUser.setRole("ADMIN");
+            return baseUser;
         }
         return null;
     }
 
     @Override
-    public User loginIn(String username, String password) {
-        User user = getByUsername(username);
+    public BaseUser loginIn(String email, String password) {
+        BaseUser user = getByEmail(email);
         if (user.getPassword().equals(password)) {
-            final String token = jwtTokenUtil.generateToken(userDetailsService.loadUserByUsername(username));
+            final String token = jwtTokenUtil.generateToken(userDetailsService.loadUserByUsername(email));
             user.setToken(token);
             log.info(user.toString());
             return user;
@@ -64,13 +74,13 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User createUser(User user) {
-        if (userMapper.selectByUsername(user.getUserName()) != null) {
+        if (userMapper.selectByEmail(user.getEmail()) != null) {
             user.setId(-1L);
             return user;
         }
         int result = userMapper.insert(user);
         if (result > 0) {
-            return userMapper.selectByUsername(user.getUserName());
+            return userMapper.selectByEmail(user.getEmail());
         }
         return null;
     }

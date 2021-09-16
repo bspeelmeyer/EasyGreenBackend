@@ -32,10 +32,10 @@
         from user
     </select>
 
-    <select id="selectByUsername" resultMap="BaseResultMap">
+    <select id="selectByEmail" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List"/>
-        from user where `username` =#{username,jdbcType=VARCHAR}
+        from user where `email` =#{email,jdbcType=VARCHAR}
     </select>
 
     <insert id="insert" parameterType="com.pp1.easygreen.entity.User" useGeneratedKeys="true"  keyProperty="id">

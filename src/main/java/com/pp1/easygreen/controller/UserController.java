@@ -1,5 +1,6 @@
 package com.pp1.easygreen.controller;
 
+import com.pp1.easygreen.entity.BaseUser;
 import com.pp1.easygreen.entity.User;
 import com.pp1.easygreen.service.UserService;
 import com.pp1.easygreen.utils.CommonResult;
@@ -31,10 +32,10 @@ public class UserController {
     }
 
     @RequestMapping(value = "/auth/login", method = RequestMethod.POST)
-    public CommonResult<User> login(@RequestBody JSONObject param) throws IOException {
-        String username = param.getString("username");
+    public CommonResult<BaseUser> login(@RequestBody JSONObject param) throws IOException {
+        String email = param.getString("email");
         String password = param.getString("password");
-        User user = userService.loginIn(username, password);
+        BaseUser user = userService.loginIn(email, password);
         if (user != null) {
             return CommonResult.success(user);
         }

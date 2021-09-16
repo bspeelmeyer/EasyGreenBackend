@@ -13,7 +13,6 @@ public class User {
     private String gender;
     private Date dateOfBirth;
     private String address;
-    private String token;
 
     public User(){}
 
@@ -117,9 +116,5 @@ public class User {
 
     public void setAddress(String address) {
         this.address = address;
-    }
-
-    public void setToken(String token) {
-        this.token = token;
     }
 }

@@ -1,5 +1,6 @@
 package com.pp1.easygreen.security.jwt;
 
+import com.pp1.easygreen.entity.BaseUser;
 import com.pp1.easygreen.entity.User;
 import com.pp1.easygreen.security.SecurityUserDetails;
 import com.pp1.easygreen.service.UserService;
@@ -26,8 +27,8 @@ public class JwtUserDetailsService implements UserDetailsService {
         log.info("JwtUserDetailsService: username is {}", username);
         List<GrantedAuthority> authorityList = new ArrayList<>();
 //        from database to get role
-        User user = userService.getByUsername(username);
-        return new SecurityUserDetails(user.getUserName(), user.getPassword(), authorityList);
+        BaseUser user = userService.getByEmail(username);
+        return new SecurityUserDetails(user.getEmail(), user.getPassword(), authorityList);
     }
 
 }

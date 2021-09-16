@@ -1,5 +1,6 @@
 package com.pp1.easygreen;
 
+import com.pp1.easygreen.entity.BaseUser;
 import com.pp1.easygreen.entity.User;
 import com.pp1.easygreen.mapper.UserMapper;
 import com.pp1.easygreen.service.UserService;
@@ -23,13 +24,13 @@ public class EasygreenApplicationTests {
 
     @Test
     public void contextLoads() {
-        User user = userService.loginIn("user", "user");
+        BaseUser user = userService.loginIn("user", "user");
         System.out.print("UserId: ");
         System.out.println(user.getId());
     }
 
     @Test
     public void testMapper() {
-        System.out.println(userMapper.selectByUsername("user"));
+        System.out.println(userMapper.selectByEmail("user@user.com"));
     }
 }

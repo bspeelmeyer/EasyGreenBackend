@@ -12,7 +12,7 @@ public interface UserMapper {
 
     List<User> selectAll();
 
-    User selectByUsername(String username);
+    User selectByEmail(String email);
 
     int insert(User userRecord);
 }
