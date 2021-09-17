@@ -38,4 +38,10 @@
         from admin
         where `id` = #{id,jdbcType=BIGINT}
     </delete>
+    <insert id="insert" parameterType="com.pp1.easygreen.entity.Admin" useGeneratedKeys="true" keyProperty="id">
+
+        insert into admin (`name`, `password`, `email`, `phone`)
+        values (#{name,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR},
+                #{email,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR} )
+    </insert>
 </mapper>

@@ -30,4 +30,20 @@ public class AdminServiceImpl implements AdminService {
         return adminMapper.selectAll();
     }
 
+    @Override
+    public Admin createAdmin(Admin admin) {
+        Admin admin1 = adminMapper.selectByEmail(admin.getEmail());
+        if (admin1 != null) {
+            // already exist
+            admin1.setId(-1L);
+            return admin1;
+        }
+        int result = adminMapper.insert(admin);
+        admin = adminMapper.selectByEmail(admin.getEmail());
+        if (result > 0) {
+            return admin;
+        }
+        return null;
+    }
+
 }

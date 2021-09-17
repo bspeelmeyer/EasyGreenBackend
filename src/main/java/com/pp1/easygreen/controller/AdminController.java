@@ -24,4 +24,23 @@ public class AdminController {
         return CommonResult.success(adminService.getAllAdminInfo());
     }
 
+    @RequestMapping(value = "/admin", method = RequestMethod.POST)
+    public CommonResult<Admin> createAdmin(@RequestBody JSONObject param) throws IOException {
+        Admin admin = param.toJavaObject(Admin.class);
+        admin = new Admin(
+                param.getString("username"),
+                param.getString("password"),
+                param.getString("email"),
+                param.getString("phone")
+        );
+        admin = adminService.createAdmin(admin);
+        if (admin == null) {
+            return CommonResult.failed("Cannot create an admin");
+        }
+        if (admin.getId() == -1) {
+            return CommonResult.failed("This admin account is already existed");
+        }
+        return CommonResult.success(admin);
+    }
+
 }

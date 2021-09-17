@@ -9,8 +9,7 @@ public class Admin {
 
     public Admin() {}
 
-    public Admin(Long id, String name, String password, String email, String phone) {
-        this.id = id;
+    public Admin(String name, String password, String email, String phone) {
         this.name = name;
         this.password = password;
         this.email = email;

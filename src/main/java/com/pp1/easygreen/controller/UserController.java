@@ -6,7 +6,6 @@ import com.pp1.easygreen.service.UserService;
 import com.pp1.easygreen.utils.CommonResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.alibaba.fastjson.JSONObject;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -44,19 +43,18 @@ public class UserController {
         }
     }
 
-    @RequestMapping(value = "/addUser", method = RequestMethod.POST)
-    public CommonResult<User> createUser(@RequestBody User user) throws IOException {
+    @RequestMapping(value = "/user", method = RequestMethod.POST)
+    public CommonResult<User> createUser(@RequestBody JSONObject param) throws IOException {
         User newUser = new User(
-                user.getId(),
-                user.getFirstName(),
-                user.getLastName(),
-                user.getUserName(),
-                user.getPassword(),
-                user.getEmail(),
-                user.getPhone(),
-                user.getGender(),
-                user.getDateOfBirth(),
-                user.getAddress()
+                param.getString("firstname"),
+                param.getString("lastname"),
+                param.getString("username"),
+                param.getString("password"),
+                param.getString("email"),
+                param.getString("phone"),
+                param.getString("gender"),
+                param.getLong("dateOfBirth"),
+                param.getString("address")
         );
         newUser = userService.createUser(newUser);
         int userDuplicateFlag = -1;

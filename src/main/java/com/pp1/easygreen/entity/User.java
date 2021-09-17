@@ -25,8 +25,7 @@ public class User {
         this.password = password;
     }
 
-    public User(Long id, String firstName, String lastName, String userName, String password, String email, String phone, String gender, Date dateOfBirth, String address) {
-        this.id = id;
+    public User(String firstName, String lastName, String userName, String password, String email, String phone, String gender, Long dateOfBirth, String address) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.userName = userName;
@@ -34,7 +33,7 @@ public class User {
         this.email = email;
         this.phone = phone;
         this.gender = gender;
-        this.dateOfBirth = dateOfBirth;
+        this.dateOfBirth = new Date(dateOfBirth);
         this.address = address;
     }
 

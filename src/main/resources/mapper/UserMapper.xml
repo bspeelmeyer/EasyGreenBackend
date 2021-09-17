@@ -39,13 +39,13 @@
     </select>
 
     <insert id="insert" parameterType="com.pp1.easygreen.entity.User" useGeneratedKeys="true"  keyProperty="id">
-        insert into user (`id`, `first_name`, `last_name`,
+        insert into user (`first_name`, `last_name`,
         `username`, `password`, `email`,
         `phone`, `gender`, `date_of_birth`,
         `address`)
-        values (#{id,jdbcType=BIGINT}, #{first_name,jdbcType=VARCHAR}, #{last_name,jdbcType=INTEGER},
-        #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR},
-        #{phone,jdbcType=VARCHAR}, #{gender,jdbcType=VARCHAR}, #{date_of_birth,jdbcType=TIMESTAMP},
+        values (#{firstName,jdbcType=VARCHAR}, #{lastName,jdbcType=INTEGER},
+        #{userName,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR},
+        #{phone,jdbcType=VARCHAR}, #{gender,jdbcType=VARCHAR}, #{dateOfBirth,jdbcType=TIMESTAMP},
         #{address,jdbcType=VARCHAR})
     </insert>
 </mapper>
