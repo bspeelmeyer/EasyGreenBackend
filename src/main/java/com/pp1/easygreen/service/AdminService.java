@@ -9,4 +9,6 @@ public interface AdminService {
     List<Admin> getAllAdminInfo();
 
     Admin createAdmin(Admin admin);
+
+    Admin getAdminInfo(Long id);
 }

@@ -46,4 +46,8 @@ public class AdminServiceImpl implements AdminService {
         return null;
     }
 
+    @Override
+    public Admin getAdminInfo(Long id) {
+        return adminMapper.selectByPrimaryKey(id);
+    }
 }

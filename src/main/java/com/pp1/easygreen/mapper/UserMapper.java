@@ -15,4 +15,6 @@ public interface UserMapper {
     User selectByEmail(String email);
 
     int insert(User userRecord);
+
+    User selectByPrimaryKey(Long id);
 }

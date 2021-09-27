@@ -6,10 +6,7 @@ import com.pp1.easygreen.service.UserService;
 import com.pp1.easygreen.utils.CommonResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.alibaba.fastjson.JSONObject;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 import java.util.List;
@@ -68,8 +65,17 @@ public class UserController {
     }
 
     @RequestMapping(value = "/user", method = RequestMethod.GET)
-    public CommonResult<List<User>> getAllStaffInfo() throws IOException {
+    public CommonResult<List<User>> getAllUserInfo() throws IOException {
         return CommonResult.success(userService.getAllUserInfo());
+    }
+
+    @RequestMapping(value = "/user/{id}", method = RequestMethod.GET)
+    public CommonResult<User> getUserInfo(@PathVariable(name = "id") Long id) throws IOException {
+        User user = userService.getUserInfo(id);
+        if (user == null) {
+            return CommonResult.failed("Get user information failed");
+        }
+        return CommonResult.success(user);
     }
 
 }

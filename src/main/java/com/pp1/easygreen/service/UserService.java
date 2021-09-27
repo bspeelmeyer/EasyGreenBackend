@@ -15,4 +15,6 @@ public interface UserService {
 
     BaseUser getByEmail(String email);
 
+    User getUserInfo(Long id);
+
 }

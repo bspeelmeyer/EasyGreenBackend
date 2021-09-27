@@ -13,4 +13,6 @@ public interface AdminMapper {
     Admin selectByEmail(String email);
 
     int insert(Admin adminRecord);
+
+    Admin selectByPrimaryKey(Long id);
 }

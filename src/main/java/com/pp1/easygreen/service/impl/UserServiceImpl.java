@@ -85,4 +85,8 @@ public class UserServiceImpl implements UserService {
         return null;
     }
 
+    @Override
+    public User getUserInfo(Long id) {
+        return userMapper.selectByPrimaryKey(id);
+    }
 }

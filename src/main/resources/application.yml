@@ -8,6 +8,12 @@ spring:
     password: 123456789
     driver-class-name: com.mysql.cj.jdbc.Driver
 
+    # online
+#    name: easygreen
+#    url: easygreendatabase.chkslcofmrha.ap-southeast-2.rds.amazonaws.com
+#    username: admin
+#    password: EasyGreenDev3729184*
+
 server:
   port: 8088
 

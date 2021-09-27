@@ -1,14 +1,12 @@
 package com.pp1.easygreen.controller;
 
 import com.pp1.easygreen.entity.Admin;
+import com.pp1.easygreen.entity.User;
 import com.pp1.easygreen.service.AdminService;
 import com.pp1.easygreen.utils.CommonResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.alibaba.fastjson.JSONObject;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 import java.util.List;
@@ -39,6 +37,15 @@ public class AdminController {
         }
         if (admin.getId() == -1) {
             return CommonResult.failed("This admin account is already existed");
+        }
+        return CommonResult.success(admin);
+    }
+
+    @RequestMapping(value = "/admin/{id}", method = RequestMethod.GET)
+    public CommonResult<Admin> getAdminInfo(@PathVariable(name = "id") Long id) throws IOException {
+        Admin admin = adminService.getAdminInfo(id);
+        if (admin == null) {
+            return CommonResult.failed("Get admin information failed");
         }
         return CommonResult.success(admin);
     }
