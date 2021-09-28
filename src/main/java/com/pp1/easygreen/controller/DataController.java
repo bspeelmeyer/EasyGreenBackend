@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.io.IOException;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api")
@@ -33,5 +34,10 @@ public class DataController {
     @RequestMapping(value = "/plant/{plantId}", method = RequestMethod.GET)
     public CommonResult<Plant> getPlantNameByPlantId(@PathVariable(name = "plantId") Long plantId) throws IOException {
         return CommonResult.success(plantService.getPlantByPlantId(plantId));
+    }
+
+    @RequestMapping(value = "/data/plant/{userId}", method = RequestMethod.GET)
+    public CommonResult<List<Data>> getDataListByUserId(@PathVariable(name = "userId") Long userId) throws IOException {
+        return CommonResult.success(dataService.getDataListByUserId(userId));
     }
 }

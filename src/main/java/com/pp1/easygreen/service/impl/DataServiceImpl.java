@@ -7,6 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @Slf4j
 @Service
@@ -17,5 +18,10 @@ public class DataServiceImpl implements DataService {
     @Override
     public Data getDataByUserId(Long userId) {
         return dataMapper.selectByUserId(userId);
+    }
+
+    @Override
+    public List<Data> getDataListByUserId(Long userId) {
+        return dataMapper.selectDataListByUserId(userId);
     }
 }

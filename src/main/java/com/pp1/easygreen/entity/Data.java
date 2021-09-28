@@ -11,6 +11,7 @@ public class Data {
     private String soilMoisture;
     private String lightIntensity;
     private Date collectTime;
+    private String plantName;
 
     public Data() {}
 
@@ -86,5 +87,13 @@ public class Data {
 
     public void setCollectTime(Date collectTime) {
         this.collectTime = collectTime;
+    }
+
+    public String getPlantName() {
+        return plantName;
+    }
+
+    public void setPlantName(String plantName) {
+        this.plantName = plantName;
     }
 }
