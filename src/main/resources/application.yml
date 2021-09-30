@@ -10,7 +10,7 @@ spring:
 
     # online
 #    name: easygreen
-#    url: easygreendatabase.chkslcofmrha.ap-southeast-2.rds.amazonaws.com
+#    url: jdbc:mysql://easygreendatabase.chkslcofmrha.ap-southeast-2.rds.amazonaws.com:3306/easygreen
 #    username: admin
 #    password: EasyGreenDev3729184*
 
