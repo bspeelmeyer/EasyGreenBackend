@@ -77,5 +77,4 @@ public class UserController {
         }
         return CommonResult.success(user);
     }
-
 }

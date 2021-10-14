@@ -15,4 +15,6 @@ public interface AdminMapper {
     int insert(Admin adminRecord);
 
     Admin selectByPrimaryKey(Long id);
+
+    int deleteByPrimaryKey(Long id);
 }

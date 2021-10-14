@@ -17,4 +17,6 @@ public interface UserMapper {
     int insert(User userRecord);
 
     User selectByPrimaryKey(Long id);
+
+    int deleteByPrimaryKey(Long id);
 }
