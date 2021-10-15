@@ -1,5 +1,4 @@
 Data Type: Mysql Developer 
-Version:
 Endpoint: easygreendatabase.chkslcofmrha.ap-southeast-2.rds.amazonaws.com
 Port: 3306
 Username: admin
