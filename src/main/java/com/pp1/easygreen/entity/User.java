@@ -37,6 +37,15 @@ public class User {
         this.address = address;
     }
 
+    public User(String userName, String firstName, String lastName, String email, String gender, String address) {
+        this.userName = userName;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.gender = gender;
+        this.address = address;
+    }
+
     public Long getId() {
         return id;
     }
