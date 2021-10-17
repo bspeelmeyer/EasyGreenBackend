@@ -53,7 +53,7 @@ class AdminServiceImplTest {
         adminMapper.insert(admin2);
         adminMapper.insert(admin3);
 
-        assert adminService.getAllAdminInfo().size() >= 6;
+        assert adminService.getAllAdminInfo().size() >= 4;
         assert adminMapper.deleteByPrimaryKey(admin1.getId()) == 1;
         assert adminMapper.deleteByPrimaryKey(admin2.getId()) == 1;
         assert adminMapper.deleteByPrimaryKey(admin3.getId()) == 1;
