@@ -41,6 +41,7 @@ INSERT INTO `admin` VALUES (1, 'admin', 'admin@admin.com', 'admin', '123456');
 DROP TABLE IF EXISTS `data`;
 CREATE TABLE `data`  (
   `id` bigint(0) NOT NULL AUTO_INCREMENT,
+  `plant_id` bigint(0) NOT NULL,
   `temperature` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
   `humidity` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
   `soil_moisture` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,

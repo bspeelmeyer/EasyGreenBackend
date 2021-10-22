@@ -30,6 +30,7 @@ public class JwtAuthorizationTokenFilter extends OncePerRequestFilter {
     private final String tokenHeader;
     private final Logger logger = LoggerFactory.getLogger(JwtAuthorizationTokenFilter.class);
 
+
     public JwtAuthorizationTokenFilter(@Qualifier("jwtUserDetailsService") UserDetailsService userDetailsService,
                                        JwtTokenUtil jwtTokenUtil, @Value("${jwt.token}") String tokenHeader) {
         this.userDetailsService = userDetailsService;
