@@ -24,4 +24,14 @@ public class DataServiceImpl implements DataService {
     public List<Data> getDataListByUserId(Long userId) {
         return dataMapper.selectDataListByUserId(userId);
     }
+
+    @Override
+    public boolean deleteData(Long id) {
+        if (dataMapper.deleteByPrimaryKey(id) > 0) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
 }

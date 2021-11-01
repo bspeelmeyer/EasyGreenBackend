@@ -77,4 +77,23 @@ public class UserController {
         }
         return CommonResult.success(user);
     }
+
+    @RequestMapping(value = "/user", method = RequestMethod.PUT)
+    public CommonResult<User> updateProfile(@RequestBody JSONObject param) throws IOException {
+        System.out.println(param.toString());
+        User user = new User(
+                param.getString("userName"),
+                param.getString("firstName"),
+                param.getString("lastName"),
+                param.getString("email"),
+                param.getString("gender"),
+                param.getString("address")
+        );
+        return userService.updateUserProfile(user) ? CommonResult.success(user) : CommonResult.failed("Update user information failed");
+    }
+
+//    @RequestMapping(value = "/user/{id}", method = RequestMethod.PUT)
+//    public CommonResult<User> updateUserPassword(@PathVariable(name = "id") Long id) throws IOException {
+//
+//    }
 }

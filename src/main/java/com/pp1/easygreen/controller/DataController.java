@@ -40,4 +40,15 @@ public class DataController {
     public CommonResult<List<Data>> getDataListByUserId(@PathVariable(name = "userId") Long userId) throws IOException {
         return CommonResult.success(dataService.getDataListByUserId(userId));
     }
+
+    @RequestMapping(value = "/data/delete-plant/{id}", method = RequestMethod.POST)
+    public CommonResult<Long> deleteDataBySelected(@PathVariable(name = "id") Long id) throws IOException {
+        boolean data = dataService.deleteData(id);
+        if (data == true) {
+            return CommonResult.success(id);
+        }
+        else {
+            return CommonResult.validateFailed("Delete unsuccessful");
+        }
+    }
 }
