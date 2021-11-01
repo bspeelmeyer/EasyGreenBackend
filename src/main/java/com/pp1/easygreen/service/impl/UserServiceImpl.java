@@ -89,4 +89,10 @@ public class UserServiceImpl implements UserService {
     public User getUserInfo(Long id) {
         return userMapper.selectByPrimaryKey(id);
     }
+
+    @Override
+    public boolean updateUserProfile(User user) {
+        int result = userMapper.updateByPrimaryKeySelective(user);
+        return result > 0;
+    }
 }
