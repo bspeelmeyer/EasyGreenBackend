@@ -17,13 +17,17 @@
         <result column="plant_name" jdbcType="VARCHAR" property="plantName"></result>
     </resultMap>
     <sql id="DataSql">
-        select temperature,
+        select d.id,
+               plant_Id,
+               user_Id,
+               temperature,
                humidity,
                soil_moisture,
                light_intensity,
-               p.plant_name plant_name
-        from data
-        left join plant p on p.id = data.plant_id
+               p.plant_name plant_name,
+               collect_time
+        from data d
+        left join plant p on p.id = d.plant_id
     </sql>
     <sql id="Base_Column_List">
         <!--
@@ -50,4 +54,9 @@
         <include refid="DataSql"></include>
         where `user_id` = #{user_id,jdbcType=BIGINT}
     </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        delete
+        from data
+        where `id` = #{id,jdbcType=BIGINT}
+    </delete>
 </mapper>

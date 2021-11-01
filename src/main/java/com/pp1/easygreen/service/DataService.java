@@ -8,4 +8,6 @@ public interface DataService {
     Data getDataByUserId(Long userId);
 
     List<Data> getDataListByUserId(Long userId);
+
+    boolean deleteData(Long id);
 }
