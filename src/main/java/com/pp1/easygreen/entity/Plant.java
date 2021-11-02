@@ -7,6 +7,12 @@ public class Plant {
 
     public Plant() {}
 
+    public Plant(Long id, String plantName, String description) {
+        this.id = id;
+        this.plantName = plantName;
+        this.description = description;
+    }
+
     public Plant(String plantName, String description) {
         this.plantName = plantName;
         this.description = description;

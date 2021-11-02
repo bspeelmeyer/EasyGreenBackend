@@ -19,8 +19,6 @@ import java.util.List;
 public class DataController {
     @Autowired
     private DataService dataService;
-    @Autowired
-    private PlantService plantService;
 
     @RequestMapping(value = "/data/{userId}", method = RequestMethod.GET)
     public CommonResult<Data> getDataByUserId(@PathVariable(name = "userId") Long userId) throws IOException {
@@ -29,11 +27,6 @@ public class DataController {
             return CommonResult.failed("Get data failed");
         }
         return CommonResult.success(data);
-    }
-
-    @RequestMapping(value = "/plant/{plantId}", method = RequestMethod.GET)
-    public CommonResult<Plant> getPlantNameByPlantId(@PathVariable(name = "plantId") Long plantId) throws IOException {
-        return CommonResult.success(plantService.getPlantByPlantId(plantId));
     }
 
     @RequestMapping(value = "/data/plant/{userId}", method = RequestMethod.GET)
