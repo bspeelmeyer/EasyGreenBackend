@@ -9,6 +9,8 @@ import java.util.List;
 public interface DataMapper {
     Data selectByUserId(Long userId);
 
+    Data selectByPrimaryKey(Long id);
+
     List<Data> selectDataListByUserId(Long userId);
 
     int deleteByPrimaryKey(Long id);
