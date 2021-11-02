@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 
 import javax.annotation.Resource;
 
+import java.util.Date;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -80,5 +81,22 @@ class DataServiceImplTest {
         assert dataList.size() >= 2;
         assert dataMapper.deleteByPrimaryKey(d1.getId()) == 1;
         assert dataMapper.deleteByPrimaryKey(d2.getId()) == 1;
+    }
+
+    @Test
+    void updateDate() {
+        Data data = new Data();
+        data.setId(RandomUtil.randomLong(10));
+        data.setLightIntensity("100");
+        data.setHumidity("100");
+        data.setSoilMoisture("100");
+        data.setTemperature("50");
+        Date collectTime = new Date((long) 1619065800 * 1000);
+        data.setCollectTime(collectTime);
+        data = dataService.createData(data);
+        data.setTemperature("20");
+        assert dataService.updateData(data) == 1;
+        assert "20".equals(dataMapper.selectByPrimaryKey(data.getId()).getTemperature());
+        assert dataMapper.deleteByPrimaryKey(data.getId()) == 1;
     }
 }
