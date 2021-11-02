@@ -63,4 +63,16 @@ class PlantServiceImplTest {
         assert plantService.createPlant(plant).getId() != null;
         assert plantMapper.deleteByPrimaryKey(plant.getId()) == 1;
     }
+
+    @Test
+    void updatePlant() {
+        Plant plant = new Plant();
+        plant.setPlantName("Rose");
+        plant.setDescription("Rose Flower");
+        plant = plantService.createPlant(plant);
+        plant.setPlantName("Tulip");
+        assert plantService.updatePlant(plant) == 1;
+        assert "Tulip".equals(plantMapper.selectByPlantId(plant.getId()).getPlantName());
+        assert plantMapper.deleteByPrimaryKey(plant.getId()) == 1;
+    }
 }
