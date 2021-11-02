@@ -73,4 +73,25 @@
         <include refid="Base_Column_List"/>
         from data
     </select>
+    <update id="updateByPrimaryKeySelective" parameterType="com.pp1.easygreen.entity.Data">
+        update data
+        <set>
+            <if test="temperature != null">
+                `temperature` = #{temperature,jdbcType=VARCHAR},
+            </if>
+            <if test="humidity != null">
+                `humidity` = #{humidity,jdbcType=VARCHAR},
+            </if>
+            <if test="soilMoisture != null">
+                `soil_moisture` = #{soilMoisture,jdbcType=VARCHAR},
+            </if>
+            <if test="lightIntensity != null">
+                `light_intensity` = #{lightIntensity,jdbcType=VARCHAR},
+            </if>
+            <if test="collectTime != null">
+                `collect_time` = #{collectTime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where `id` = #{id,jdbcType=BIGINT}
+    </update>
 </mapper>

@@ -15,4 +15,6 @@ public interface DataService {
 
     List<Data> getAllData();
 
+    int updateData(Data data);
+
 }

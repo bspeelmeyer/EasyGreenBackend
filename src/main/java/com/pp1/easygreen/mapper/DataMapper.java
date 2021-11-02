@@ -16,4 +16,6 @@ public interface DataMapper {
     int insert(Data dataRecord);
 
     List<Data> selectDataList();
+
+    int updateByPrimaryKeySelective(Data dataRecord);
 }
