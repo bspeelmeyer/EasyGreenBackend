@@ -1,15 +1,13 @@
 package com.pp1.easygreen.controller;
 
+import com.alibaba.fastjson.JSONObject;
 import com.pp1.easygreen.entity.Data;
 import com.pp1.easygreen.entity.Plant;
 import com.pp1.easygreen.service.DataService;
 import com.pp1.easygreen.service.PlantService;
 import com.pp1.easygreen.utils.CommonResult;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 import java.util.List;
@@ -50,5 +48,19 @@ public class DataController {
         else {
             return CommonResult.validateFailed("Delete unsuccessful");
         }
+    }
+
+    @RequestMapping(value = "/data", method = RequestMethod.PUT)
+    public CommonResult<String> updateData(@RequestBody JSONObject param) {
+        Data data = new Data(
+                param.getLong("id"),
+                param.getString("temperature"),
+                param.getString("humidity"),
+                param.getString("soilMoisture"),
+                param.getString("lightIntensity"),
+                param.getLong("collectTime")
+        );
+        dataService.updateData(data);
+        return CommonResult.success("Data has been updated");
     }
 }

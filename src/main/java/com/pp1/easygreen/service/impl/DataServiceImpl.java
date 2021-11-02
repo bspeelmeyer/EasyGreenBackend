@@ -47,4 +47,9 @@ public class DataServiceImpl implements DataService {
     public List<Data> getAllData() {
         return dataMapper.selectDataList();
     }
+
+    @Override
+    public int updateData(Data data) {
+        return dataMapper.updateByPrimaryKeySelective(data);
+    }
 }
