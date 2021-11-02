@@ -12,4 +12,8 @@ public interface DataMapper {
     List<Data> selectDataListByUserId(Long userId);
 
     int deleteByPrimaryKey(Long id);
+
+    int insert(Data dataRecord);
+
+    List<Data> selectDataList();
 }

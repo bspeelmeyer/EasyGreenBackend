@@ -10,4 +10,9 @@ public interface DataService {
     List<Data> getDataListByUserId(Long userId);
 
     boolean deleteData(Long id);
+
+    Data createData(Data data);
+
+    List<Data> getAllData();
+
 }

@@ -9,4 +9,19 @@ class PlantServiceImplTest {
     @Test
     void getPlantByPlantId() {
     }
+
+    @Test
+    void getAllPlant() {
+
+    }
+
+    @Test
+    void deletePlant() {
+
+    }
+
+    @Test
+    void createPlant() {
+
+    }
 }

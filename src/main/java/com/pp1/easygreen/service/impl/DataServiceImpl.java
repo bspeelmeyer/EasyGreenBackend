@@ -34,4 +34,17 @@ public class DataServiceImpl implements DataService {
             return false;
         }
     }
+
+    @Override
+    public Data createData(Data data) {
+        if (dataMapper.insert(data) > 0) {
+            return data;
+        }
+        return null;
+    }
+
+    @Override
+    public List<Data> getAllData() {
+        return dataMapper.selectDataList();
+    }
 }
