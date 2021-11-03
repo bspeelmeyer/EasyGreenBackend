@@ -29,7 +29,7 @@ public class PlantController {
     }
 
     // delete plant by user's selection
-    @RequestMapping(value = "/plant/delete-plant/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/plant/delete-plant/{id}", method = RequestMethod.POST)
     public CommonResult<Long> deletePlantBySelected(@PathVariable(name = "id") Long id) throws IOException {
         boolean plant = plantService.deletePlant(id);
         if (plant == true) {
