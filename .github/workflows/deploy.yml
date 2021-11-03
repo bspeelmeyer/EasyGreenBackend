@@ -1,0 +1,20 @@
+name: deploy to production
+
+on:
+  push:
+    branches:
+      - container
+  pull_request:
+    branches:
+      - container
+
+jobs:
+  build:
+    name: Build and push 
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        run: |
+          java --version
+          pwd
