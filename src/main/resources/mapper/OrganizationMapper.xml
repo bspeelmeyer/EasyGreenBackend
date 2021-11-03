@@ -36,7 +36,7 @@
         -->
         select
         <include refid="Base_Column_List"/>
-        from organization
+        from org
         where `id` = #{id,jdbcType=BIGINT}
     </select>
     <select id="selectAllOrganization" resultMap="BaseResultMap">
@@ -47,20 +47,20 @@
         -->
         select
         <include refid="Base_Column_List"/>
-        from organization
+        from org
     </select>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
         delete
-        from organization
+        from org
         where `id` = #{id,jdbcType=BIGINT}
     </delete>
     <insert id="insert" parameterType="com.pp1.easygreen.entity.Organization" useGeneratedKeys="true" keyProperty="id">
 
-        insert into organization (`id`, `name`)
+        insert into org (`id`, `name`)
         values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR})
     </insert>
     <update id="updateByPrimaryKeySelective" parameterType="com.pp1.easygreen.entity.Data">
-        update organization
+        update org
         <set>
             <if test="name != null">
                 `name` = #{name,jdbcType=VARCHAR},
