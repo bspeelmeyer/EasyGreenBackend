@@ -93,8 +93,13 @@ public class UserController {
         return userService.updateUserProfile(user) ? CommonResult.success(user) : CommonResult.failed("Update user information failed");
     }
 
-//    @RequestMapping(value = "/user/{id}", method = RequestMethod.PUT)
-//    public CommonResult<User> updateUserPassword(@PathVariable(name = "id") Long id) throws IOException {
-//
-//    }
+    @RequestMapping(value = "/user/update", method = RequestMethod.PUT)
+    public CommonResult<User> updateUserPassword(@RequestBody JSONObject param) throws IOException {
+        System.out.println(param.toString());
+        User user = new User(
+                param.getLong("id"),
+                param.getString("password")
+        );
+        return userService.updateUserProfile(user) ? CommonResult.success(user) : CommonResult.failed("Update user password failed");
+    }
 }

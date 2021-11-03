@@ -25,6 +25,11 @@ public class User {
         this.password = password;
     }
 
+    public User(Long id, String password) {
+        this.id = id;
+        this.password = password;
+    }
+
     public User(String firstName, String lastName, String userName, String password, String email, String phone, String gender, Long dateOfBirth, String address) {
         this.firstName = firstName;
         this.lastName = lastName;
