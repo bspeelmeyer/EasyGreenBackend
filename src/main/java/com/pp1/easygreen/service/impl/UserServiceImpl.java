@@ -8,6 +8,7 @@ import com.pp1.easygreen.mapper.UserMapper;
 import com.pp1.easygreen.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Service;
 import com.pp1.easygreen.security.jwt.JwtTokenUtil;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -94,5 +95,14 @@ public class UserServiceImpl implements UserService {
     public boolean updateUserProfile(User user) {
         int result = userMapper.updateByPrimaryKeySelective(user);
         return result > 0;
+    }
+
+    @Override
+    public boolean deleteUser(Long id) {
+        if (userMapper.deleteByPrimaryKey(id) > 0) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }

@@ -102,4 +102,14 @@ public class UserController {
         );
         return userService.updateUserProfile(user) ? CommonResult.success(user) : CommonResult.failed("Update user password failed");
     }
+
+    @RequestMapping(value = "/user/delete/{id}", method = RequestMethod.POST)
+    public CommonResult<Long> deleteUserBySelected(@PathVariable(name = "id") Long id) throws IOException {
+        boolean user = userService.deleteUser(id);
+        if (user == true) {
+            return CommonResult.success(id);
+        } else {
+            return CommonResult.validateFailed("Delete unsuccessful");
+        }
+    }
 }
