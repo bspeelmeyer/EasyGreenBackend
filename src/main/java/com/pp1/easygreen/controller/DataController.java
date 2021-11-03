@@ -2,9 +2,7 @@ package com.pp1.easygreen.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.pp1.easygreen.entity.Data;
-import com.pp1.easygreen.entity.Plant;
 import com.pp1.easygreen.service.DataService;
-import com.pp1.easygreen.service.PlantService;
 import com.pp1.easygreen.utils.CommonResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

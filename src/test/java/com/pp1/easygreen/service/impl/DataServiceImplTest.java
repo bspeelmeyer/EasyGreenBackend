@@ -11,8 +11,6 @@ import javax.annotation.Resource;
 import java.util.Date;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class DataServiceImplTest {
     @Resource
     DataService dataService;
