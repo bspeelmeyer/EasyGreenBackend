@@ -11,6 +11,10 @@ public class Organization {
         this.name = name;
     }
 
+    public Organization(String name) {
+        this.name = name;
+    }
+
     public Long getId() {
         return id;
     }

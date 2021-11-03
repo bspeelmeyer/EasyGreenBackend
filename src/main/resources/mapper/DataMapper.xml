@@ -72,10 +72,10 @@
     </delete>
     <insert id="insert" parameterType="com.pp1.easygreen.entity.Data" useGeneratedKeys="true" keyProperty="id">
 
-        insert into data (`id`, `plant_id`, `user_id`,
+        insert into data (`plant_id`, `user_id`,
                            `temperature`, `humidity`, `soil_moisture`,
                            `light_intensity`, `collect_time`)
-        values (#{id,jdbcType=BIGINT}, #{plant_id,jdbcType=BIGINT}, #{user_id,jdbcType=BIGINT},
+        values (#{plant_id,jdbcType=BIGINT}, #{user_id,jdbcType=BIGINT},
                 #{temperature,jdbcType=VARCHAR}, #{humidity,jdbcType=VARCHAR}, #{soil_moisture,jdbcType=VARCHAR}, #{light_intensity,jdbcType=VARCHAR},
                 #{collect_time,jdbcType=TIMESTAMP})
     </insert>

@@ -56,8 +56,8 @@
     </delete>
     <insert id="insert" parameterType="com.pp1.easygreen.entity.Organization" useGeneratedKeys="true" keyProperty="id">
 
-        insert into org (`id`, `name`)
-        values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR})
+        insert into org (`name`)
+        values (#{name,jdbcType=VARCHAR})
     </insert>
     <update id="updateByPrimaryKeySelective" parameterType="com.pp1.easygreen.entity.Data">
         update org

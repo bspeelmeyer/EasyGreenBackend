@@ -31,8 +31,8 @@
     </delete>
     <insert id="insert" parameterType="com.pp1.easygreen.entity.Plant" useGeneratedKeys="true" keyProperty="id">
 
-        insert into plant (`id`, `plant_name`, `description`)
-        values (#{id,jdbcType=BIGINT}, #{plant_name,jdbcType=VARCHAR}, #{description,jdbcType=LONGVARCHAR})
+        insert into plant (`plant_name`, `description`)
+        values (#{plantName,jdbcType=VARCHAR}, #{description,jdbcType=LONGVARCHAR})
     </insert>
     <select id="selectPlantList" resultMap="BaseResultMap">
         select
