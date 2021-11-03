@@ -12,6 +12,12 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.util.List;
 
+/**
+ * @author Hang Yang
+ * @date 02/11/2021 : 1:30 PM
+ * @email s3799719@student.rmit.edu.au
+ */
+
 @Slf4j
 @Service
 public class PlantServiceImpl implements PlantService {

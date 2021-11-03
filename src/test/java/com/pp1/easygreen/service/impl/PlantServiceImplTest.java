@@ -4,12 +4,22 @@ import cn.hutool.core.util.RandomUtil;
 import com.pp1.easygreen.entity.Plant;
 import com.pp1.easygreen.mapper.PlantMapper;
 import com.pp1.easygreen.service.PlantService;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
 
 import javax.annotation.Resource;
 
 import java.util.List;
 
+/**
+ * @author Hang Yang
+ * @date 02/11/2021 : 1:45 PM
+ * @email s3799719@student.rmit.edu.au
+ */
+
+@Slf4j
+@SpringBootTest
 class PlantServiceImplTest {
     @Resource
     PlantService plantService;

@@ -9,9 +9,18 @@ public interface PlantMapper {
 
     List<Plant> selectPlantList();
 
+    /**
+     * This method corresponds to the database table location
+     */
     int deleteByPrimaryKey(Long id);
 
+    /**
+     * This method corresponds to the database table location
+     */
     int insert(Plant plantRecord);
 
+    /**
+     * This method corresponds to the database table location
+     */
     int updateByPrimaryKeySelective(Plant plantRecord);
 }
