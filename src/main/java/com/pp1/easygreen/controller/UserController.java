@@ -82,6 +82,7 @@ public class UserController {
     public CommonResult<User> updateProfile(@RequestBody JSONObject param) throws IOException {
         System.out.println(param.toString());
         User user = new User(
+                param.getLong("id"),
                 param.getString("userName"),
                 param.getString("firstName"),
                 param.getString("lastName"),
