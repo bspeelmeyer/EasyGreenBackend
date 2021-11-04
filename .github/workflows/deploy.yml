@@ -3,11 +3,10 @@ name: deploy to production
 
 on:
   push:
-    branches:
-      - container
+    branches: [develop]
+    
   pull_request:
-    branches:
-      - container
+    branches: [container]
 
 jobs:
   build:
