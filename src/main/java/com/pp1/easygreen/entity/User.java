@@ -25,6 +25,11 @@ public class User {
         this.password = password;
     }
 
+    public User(Long id, String password) {
+        this.id = id;
+        this.password = password;
+    }
+
     public User(String firstName, String lastName, String userName, String password, String email, String phone, String gender, Long dateOfBirth, String address) {
         this.firstName = firstName;
         this.lastName = lastName;
@@ -34,6 +39,16 @@ public class User {
         this.phone = phone;
         this.gender = gender;
         this.dateOfBirth = new Date(dateOfBirth);
+        this.address = address;
+    }
+
+    public User(Long id, String userName, String firstName, String lastName, String email, String gender, String address) {
+        this.id = id;
+        this.userName = userName;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.gender = gender;
         this.address = address;
     }
 

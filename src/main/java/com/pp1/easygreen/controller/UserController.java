@@ -78,4 +78,38 @@ public class UserController {
         return CommonResult.success(user);
     }
 
+    @RequestMapping(value = "/user", method = RequestMethod.PUT)
+    public CommonResult<User> updateProfile(@RequestBody JSONObject param) throws IOException {
+        System.out.println(param.toString());
+        User user = new User(
+                param.getLong("id"),
+                param.getString("userName"),
+                param.getString("firstName"),
+                param.getString("lastName"),
+                param.getString("email"),
+                param.getString("gender"),
+                param.getString("address")
+        );
+        return userService.updateUserProfile(user) ? CommonResult.success(user) : CommonResult.failed("Update user information failed");
+    }
+
+    @RequestMapping(value = "/user/update", method = RequestMethod.PUT)
+    public CommonResult<User> updateUserPassword(@RequestBody JSONObject param) throws IOException {
+        System.out.println(param.toString());
+        User user = new User(
+                param.getLong("id"),
+                param.getString("password")
+        );
+        return userService.updateUserProfile(user) ? CommonResult.success(user) : CommonResult.failed("Update user password failed");
+    }
+
+    @RequestMapping(value = "/user/delete/{id}", method = RequestMethod.POST)
+    public CommonResult<Long> deleteUserBySelected(@PathVariable(name = "id") Long id) throws IOException {
+        boolean user = userService.deleteUser(id);
+        if (user == true) {
+            return CommonResult.success(id);
+        } else {
+            return CommonResult.validateFailed("Delete unsuccessful");
+        }
+    }
 }
