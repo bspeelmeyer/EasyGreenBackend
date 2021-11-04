@@ -4,13 +4,17 @@ import cn.hutool.core.util.RandomUtil;
 import com.pp1.easygreen.entity.Data;
 import com.pp1.easygreen.mapper.DataMapper;
 import com.pp1.easygreen.service.DataService;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
 
 import javax.annotation.Resource;
 
 import java.util.Date;
 import java.util.List;
 
+@Slf4j
+@SpringBootTest
 class DataServiceImplTest {
     @Resource
     DataService dataService;
@@ -21,13 +25,14 @@ class DataServiceImplTest {
     Data generateData() {
         Data data = new Data();
 
-        data.setId(RandomUtil.randomLong(10));
         data.setPlantId(RandomUtil.randomLong(10));
         data.setUserId(RandomUtil.randomLong(10));
         data.setTemperature(RandomUtil.randomString(11));
         data.setHumidity(RandomUtil.randomString(11));
         data.setSoilMoisture(RandomUtil.randomString(11));
         data.setLightIntensity(RandomUtil.randomString(11));
+        Date collectTime = new Date((long) 1619065800 * 1000);
+        data.setCollectTime(collectTime);
         return data;
     }
 
@@ -35,9 +40,9 @@ class DataServiceImplTest {
     void getDataByUserId() {
         Data d1 = generateData();
         assert dataMapper.insert(d1) == 1;
-        assert d1.getId() != null;
-        Data tmpD1 = dataService.getDataByUserId(d1.getId());
-        assert tmpD1.getId().equals(d1.getId());
+        assert d1.getUserId() != null;
+        Data tmpD1 = dataService.getDataByUserId(d1.getUserId());
+        assert tmpD1.getUserId().equals(d1.getUserId());
         assert tmpD1.getLightIntensity().equals(d1.getLightIntensity());
         assert dataMapper.deleteByPrimaryKey(d1.getId()) == 1;
     }
@@ -48,13 +53,13 @@ class DataServiceImplTest {
         Data d2 = generateData();
         Data data = new Data();
         assert dataMapper.insert(data) == 1;
-        d1.setUserId(data.getId());
-        d2.setUserId(data.getId());
+        d1.setUserId(data.getUserId());
+        d2.setUserId(data.getUserId());
 
         d1 = dataService.createData(d1);
         d2 = dataService.createData(d2);
 
-        List<Data> dataList = dataService.getDataListByUserId(data.getId());
+        List<Data> dataList = dataService.getDataListByUserId(data.getUserId());
         assert dataList.size() == 2;
         assert dataMapper.deleteByPrimaryKey(d1.getId()) == 1;
         assert dataMapper.deleteByPrimaryKey(d2.getId()) == 1;
@@ -82,9 +87,11 @@ class DataServiceImplTest {
     }
 
     @Test
-    void updateDate() {
+    void updateData() {
         Data data = new Data();
         data.setId(RandomUtil.randomLong(10));
+        data.setPlantId(RandomUtil.randomLong(10));
+        data.setUserId(RandomUtil.randomLong(10));
         data.setLightIntensity("100");
         data.setHumidity("100");
         data.setSoilMoisture("100");

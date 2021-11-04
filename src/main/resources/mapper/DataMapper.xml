@@ -52,7 +52,7 @@
         select
         <include refid="Base_Column_List"/>
         from data
-        where `user_id` = #{user_id,jdbcType=BIGINT}
+        where `user_id` = #{userId,jdbcType=BIGINT}
     </select>
     <select id="selectDataListByUserId" resultMap="DataResultMap">
         <!--
@@ -61,7 +61,7 @@
           This element was generated on Tue Mar 30 14:22:00 CST 2021.
         -->
         <include refid="DataSql"></include>
-        where `user_id` = #{user_id,jdbcType=BIGINT}
+        where `user_id` = #{userId,jdbcType=BIGINT}
     </select>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
         delete
@@ -73,9 +73,9 @@
         insert into data (`plant_id`, `user_id`,
                            `temperature`, `humidity`, `soil_moisture`,
                            `light_intensity`, `collect_time`)
-        values (#{plant_id,jdbcType=BIGINT}, #{user_id,jdbcType=BIGINT},
-                #{temperature,jdbcType=VARCHAR}, #{humidity,jdbcType=VARCHAR}, #{soil_moisture,jdbcType=VARCHAR}, #{light_intensity,jdbcType=VARCHAR},
-                #{collect_time,jdbcType=TIMESTAMP})
+        values (#{plantId,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT},
+                #{temperature,jdbcType=VARCHAR}, #{humidity,jdbcType=VARCHAR}, #{soilMoisture,jdbcType=VARCHAR}, #{lightIntensity,jdbcType=VARCHAR},
+                #{collectTime,jdbcType=TIMESTAMP})
     </insert>
     <select id="selectDataList" resultMap="BaseResultMap">
         select
