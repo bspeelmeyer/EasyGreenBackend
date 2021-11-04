@@ -17,4 +17,7 @@ public interface UserService {
 
     User getUserInfo(Long id);
 
+    boolean updateUserProfile(User user);
+
+    boolean deleteUser(Long id);
 }
