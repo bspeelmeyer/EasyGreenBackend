@@ -52,4 +52,9 @@ public class DataServiceImpl implements DataService {
     public int updateData(Data data) {
         return dataMapper.updateByPrimaryKeySelective(data);
     }
+
+    @Override
+    public Data getDataById(Long id) {
+        return dataMapper.selectByPrimaryKey(id);
+    }
 }

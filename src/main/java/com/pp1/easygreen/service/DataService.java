@@ -17,4 +17,5 @@ public interface DataService {
 
     int updateData(Data data);
 
+    Data getDataById(Long id);
 }

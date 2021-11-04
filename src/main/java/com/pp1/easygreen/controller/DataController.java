@@ -30,6 +30,11 @@ public class DataController {
         return CommonResult.success(dataService.getDataListByUserId(userId));
     }
 
+    @RequestMapping(value = "/data/onePlant/{Id}", method = RequestMethod.GET)
+    public CommonResult<Data> getDataById(@PathVariable(name = "Id") Long id) throws IOException {
+        return CommonResult.success(dataService.getDataById(id));
+    }
+
     @RequestMapping(value = "/data/delete-plant/{id}", method = RequestMethod.POST)
     public CommonResult<Long> deleteDataBySelected(@PathVariable(name = "id") Long id) throws IOException {
         boolean data = dataService.deleteData(id);
