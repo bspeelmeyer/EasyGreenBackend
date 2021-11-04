@@ -1,9 +1,12 @@
 package com.pp1.easygreen.mapper;
+import org.apache.ibatis.annotations.Mapper;
 
 import com.pp1.easygreen.entity.Plant;
 
+
 import java.util.List;
 
+@Mapper
 public interface PlantMapper {
     Plant selectByPlantId(Long plantId);
 

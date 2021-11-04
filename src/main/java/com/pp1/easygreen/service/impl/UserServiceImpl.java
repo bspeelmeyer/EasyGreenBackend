@@ -67,7 +67,7 @@ public class UserServiceImpl implements UserService {
         if (user.getPassword().equals(password)) {
             final String token = jwtTokenUtil.generateToken(userDetailsService.loadUserByUsername(email));
             user.setToken(token);
-            log.info(user.toString());
+            // log.info(user.toString());
             return user;
         }
         return null;
