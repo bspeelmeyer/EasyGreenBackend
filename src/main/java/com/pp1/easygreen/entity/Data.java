@@ -25,6 +25,15 @@ public class Data {
         this.collectTime = new Date(collectTime);
     }
 
+    public Data(Long id, String temperature, String humidity, String soilMoisture, String lightIntensity, Long collectTime) {
+        this.id = id;
+        this.temperature = temperature;
+        this.humidity = humidity;
+        this.soilMoisture = soilMoisture;
+        this.lightIntensity = lightIntensity;
+        this.collectTime = new Date(collectTime);
+    }
+
     public Long getId() {
         return id;
     }
