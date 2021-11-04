@@ -1,12 +1,27 @@
 spring:
   datasource:
     # name of the database
-    name: easygreener
-    url: jdbc:mysql://localhost:3306/easygreener?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf8
+#    name: easygreener
+#    url: jdbc:mysql://localhost:3306/easygreener?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf8
     # replace username and password
-    username: root
-    password: 123456789
+#    username: root
+#    password: 123456789
     driver-class-name: com.mysql.cj.jdbc.Driver
 
+    # online
+    name: easygreen
+    url: jdbc:mysql://easygreendatabase.chkslcofmrha.ap-southeast-2.rds.amazonaws.com:3306/easygreen
+    username: admin
+    password: EasyGreenDev3729184*
+
 server:
-  port: 3000
+  port: 8088
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.pp1.easygreen.entity
+
+jwt:
+  secret: secretscookiez
+  expiration: 7200000
+  token: Authorization
